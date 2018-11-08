@@ -12,7 +12,8 @@ It could be interesting to see if caching EntityManager instances (per EntityMan
 
 The JPA 2.2 specification mentions the below, pay particular attention to the text "whether entity manager instances are sometimes reused" in section 7.8.2, also look at mention of [88]:
 
-....
+[quote]
+====
 7.8 Requirements on the Container
 
 7.8.1 Application-managed Persistence Contexts
@@ -46,7 +47,7 @@ The container must throw the IllegalStateException if the application calls Enti
 [87] It is not required that these contracts be used when a third-party persistence provider is not used: the container might use these same APIs or its might use its own internal APIs.
 
 [88] The container may choose to pool EntityManagers: it instead of creating and closing in each case, it may acquire one from its pool and call clear() on it.
-....
+====
 
 One challenge with introducing an entity manager (per EntityManagerFactory) cache, is knowing when to close EntityManagers after certain errors have occurred on the EntityManager. To deal with this robustness issue, we will discard entity managers that are marked close when retrieving them from the cache. To ensure that we always put the cached EM back in cache, EntityManagerCache use is only done within JTA transactions, since we have control of the release (closing) of the EntityManager and only with SynchronizationType.SYNCHRONIZED (never with SynchronizationType.UNSYNCHRONIZED) persistence contexts.
 
