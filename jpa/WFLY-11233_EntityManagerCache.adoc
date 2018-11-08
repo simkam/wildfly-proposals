@@ -72,11 +72,11 @@ Persistence unit hint "wildfly.jpa.emcache.size", may be:
 
 === Dev Contacts
 
-* mailto:{Scott Marlow}[{smarlow@redhat.com}] JPA / WildFly integration lead
+* mailto:{email}[{author}] JPA / WildFly integration lead
 
 === QE Contacts
 
-TBD
+* mailto:msimka@redhat.com[Martin Simka]
 
 === Affected Projects or Components
 
